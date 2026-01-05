@@ -1,33 +1,33 @@
-Vue d'ensemble
-C'est un jeu de bataille navale simplifié pour 2 joueurs en ligne de commande. Le jeu se déroule sur une grille de 4x4 cases.
-Déroulement du jeu
-1. Phase de placement des bateaux
-Chaque joueur doit placer 2 bateaux (des croix simples sur une seule case).
-Comment placer un bateau :
+# BattleShip PHP - CLI Game
 
-Le jeu demande à chaque joueur de placer ses bateaux
-Tu entres les coordonnées au format : [x, y]
-Exemple : [0, 2] place un bateau à la colonne 0, ligne 2
+## Description
+Un jeu de **Bataille Navale** simplifié se jouant directement dans le terminal. Le jeu oppose deux joueurs sur une grille de 4x4 cases.
 
-Commandes disponibles pendant le placement :
+## Comment jouer
+Le jeu se déroule en deux phases :
+1.  **Phase de placement** : Chaque joueur place tour à tour ses 2 bateaux en saisissant des coordonnées au format `[x, y]` (ex: `[0, 2]`).
+2.  **Phase d'attaque** : Les joueurs tentent de deviner la position des bateaux adverses.
 
-[x, y] - Place un bateau aux coordonnées x, y
-display - Affiche la grille avec tes bateaux déjà placés (marqués d'un X)
-exit - Quitte le jeu
+### Commandes disponibles
+* `[x, y]` : Saisir une coordonnée (chiffres entre 0 et 3).
+* `display` : Affiche votre propre grille pour voir vos bateaux ou vos tirs précédents.
+* `exit` : Quitte la partie.
 
-Règles de placement :
+## Structure du projet
+* `colle.php` : Le script principal contenant toute la logique du jeu, la gestion des joueurs et l'affichage de la grille en caractères ASCII.
+* `readme` : Instructions d'origine du projet.
 
-Les coordonnées doivent être entre 0 et 3 (grille 4x4)
-Tu ne peux pas placer deux bateaux au même endroit
-Format obligatoire : [x, y] avec les crochets
+## Installation avec Docker
 
-2. Phase d'attaque
-Une fois que les deux joueurs ont placé leurs bateaux, les attaques commencent en alternance.
-Comment attaquer :
+### Prérequis
+* Docker installé sur votre machine.
 
-Entre les coordonnées de la case à attaquer : [x, y]
-Le jeu te dit si tu as touché un bateau ennemi ou non
-Les cases déjà attaquées sont mémorisées (tu ne peux pas attaquer deux fois la même case)
-
-Fin du jeu :
-Le premier joueur qui détruit les 2 bateaux de son adversaire gagne !
+### Lancement
+1.  **Construire l'image** :
+    ```bash
+    docker build -t battleship-app .
+    ```
+2.  **Démarrer une partie** :
+    ```bash
+    docker run -it --rm battleship-app
+    ```
